@@ -69,7 +69,7 @@ log() {
 #
 XIP_DOMAIN_PATTERN="(^|\.)${XIP_DOMAIN//./\.}\$"
 NS_SUBDOMAIN_PATTERN="^ns-([0-9]+)\$"
-IP_SUBDOMAIN_PATTERN="(^|\.)(((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))\$"
+IP_SUBDOMAIN_PATTERN="(^|\-)(((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\-){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))\$"
 BASE36_SUBDOMAIN_PATTERN="(^|\.)([a-z0-9]{1,7})\$"
 
 qtype_is() {
@@ -108,7 +108,7 @@ resolve_ns_subdomain() {
 
 resolve_ip_subdomain() {
   [[ "$SUBDOMAIN" =~ $IP_SUBDOMAIN_PATTERN ]] || true
-  echo "${BASH_REMATCH[2]}"
+  echo "${BASH_REMATCH[2]}" | sed 's/-/./g'
 }
 
 resolve_base36_subdomain() {

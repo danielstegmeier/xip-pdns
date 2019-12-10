@@ -52,7 +52,7 @@ prefer).
 Restart PowerDNS, and test.
 
 ```
-$ dig test.10.0.0.1.xip.test @localhost
+$ dig test-10-0-0-1.xip.test @localhost
 ;; ANSWER SECTION:
 test.10.0.0.1.xip.test. 300     IN      A       10.0.0.1
 ```
@@ -87,7 +87,7 @@ $ docker-compose up
 And test:
 
 ```
-$ dig test.10.0.0.1.xip.test @localhost
+$ dig test-10-0-0-1.xip.test @localhost
 ;; ANSWER SECTION:
 test.10.0.0.1.xip.test. 300     IN      A       10.0.0.1
 ```
